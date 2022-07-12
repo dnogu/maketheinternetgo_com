@@ -24,6 +24,7 @@ resource "aws_apigatewayv2_api" "mtig" {
 resource "aws_apigatewayv2_api_mapping" "example" {
   api_id      = aws_apigatewayv2_api.mtig.id
   domain_name = aws_apigatewayv2_domain_name.mtig.id
+  stage = "$default"
 }
 
 output "mtig_url" {
