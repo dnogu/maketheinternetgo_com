@@ -27,6 +27,6 @@ resource "aws_apigatewayv2_api_mapping" "example" {
   stage = "$default"
 }
 
-output "mtig_url" {
-  value = aws_apigatewayv2_api.mtig.api_endpoint
-}
+# output "mtig_url" {
+#   value = aws_apigatewayv2_api.mtig.api_endpoint
+# }
