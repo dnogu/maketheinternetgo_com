@@ -8,6 +8,10 @@ terraform {
       source = "hashicorp/archive"
       version = "2.2.0"
     }
+    cloudflare = {
+      source = "cloudflare/cloudflare"
+      version = "3.18.0"
+    }
   }
 }
 
@@ -16,5 +20,9 @@ provider "aws" {
 }
 
 provider "archive" {
+  # Configuration options
+}
+
+provider "cloudflare" {
   # Configuration options
 }
