@@ -8,10 +8,16 @@ resource "aws_apigatewayv2_domain_name" "mtig" {
   }
 }
 
-data "aws_acm_certificate" "issued" {
-  domain   = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}-api.maketheinternetgo.com"
-  statuses = ["ISSUED"]
-  most_recent = true
+# data "aws_acm_certificate" "issued" {
+#   domain   = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}-api.maketheinternetgo.com"
+#   statuses = ["ISSUED"]
+#   most_recent = true
+# }
+
+resource "aws_acm_certificate" "mtig" {
+  private_key      = tls_private_key.mtig.private_key_pem
+  certificate_body = tls_self_signed_cert.mtig.cert_pem
+  certificate_chain = "${data.cloudflare_origin_ca_root_certificate.origin_ca.cert_pem}${tls_private_key.mtig.private_key_pem}"
 }
 
 resource "aws_apigatewayv2_api" "mtig" {
