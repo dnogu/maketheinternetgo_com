@@ -8,12 +8,6 @@ resource "aws_apigatewayv2_domain_name" "mtig" {
   }
 }
 
-# data "aws_acm_certificate" "issued" {
-#   domain   = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}-api.maketheinternetgo.com"
-#   statuses = ["ISSUED"]
-#   most_recent = true
-# }
-
 resource "aws_acm_certificate" "mtig" {
   private_key      = tls_private_key.mtig.private_key_pem
   certificate_body = cloudflare_origin_ca_certificate.mtig.certificate
@@ -25,6 +19,9 @@ resource "aws_apigatewayv2_api" "mtig" {
   protocol_type = "HTTP"
   target = aws_lambda_function.dns_lambda.invoke_arn
   route_key = "GET /dns"
+  cors_configuration {
+    allow_orgins = "*"
+  }
 }
 
 resource "aws_apigatewayv2_api_mapping" "example" {
@@ -32,7 +29,3 @@ resource "aws_apigatewayv2_api_mapping" "example" {
   domain_name = aws_apigatewayv2_domain_name.mtig.id
   stage = "$default"
 }
-
-# output "mtig_url" {
-#   value = aws_apigatewayv2_api.mtig.api_endpoint
-# }
