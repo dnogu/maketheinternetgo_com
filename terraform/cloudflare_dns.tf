@@ -11,7 +11,6 @@ resource "tls_private_key" "mtig" {
 }
 
 resource "tls_cert_request" "mtig" {
-  key_algorithm   = tls_private_key.mtig.algorithm
   private_key_pem = tls_private_key.mtig.private_key_pem
 }
 
