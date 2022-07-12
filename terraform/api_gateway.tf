@@ -2,7 +2,7 @@ resource "aws_apigatewayv2_domain_name" "mtig" {
   domain_name = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}-api.maketheinternetgo.com"
 
   domain_name_configuration {
-    certificate_arn = data.aws_acm_certificate.issued.arn
+    certificate_arn = aws_acm_certificate.mtig.arn
     endpoint_type   = "REGIONAL"
     security_policy = "TLS_1_2"
   }
