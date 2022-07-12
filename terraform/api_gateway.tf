@@ -18,6 +18,7 @@ resource "aws_apigatewayv2_api" "mtig" {
   name          = var.env == "prod" ? "mtig-http-api" : "${var.env}_mtig-http-api"
   protocol_type = "HTTP"
   target = aws_lambda_function.dns_lambda.invoke_arn
+  route_key = "GET /dns"
 }
 
 # resource "aws_apigatewayv2_integration" "mtig" {
