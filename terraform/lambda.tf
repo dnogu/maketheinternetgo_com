@@ -35,6 +35,35 @@ resource "aws_iam_role" "iam_for_lambda" {
 EOF
 }
 
+resource "aws_iam_policy" "policy" {
+  name        = "${var.env}-mtig-lambda-execution-policy"
+  path        = "/"
+  description = "Policy used in ${var.env} for lambda role to funciton."
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  policy = jsonencode({
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "logs:CreateLogGroup",
+            "Resource": "arn:aws:logs:us-east-1:815468840516:*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:us-east-1:815468840516:log-group:/aws/lambda/${var.env}_mtig_dns_lambda:*"
+            ]
+        }
+    ]
+})
+}
+
 data "archive_file" "lambda_zip" {
   type        = "zip"
   source_file = "../aws/dns.js"
