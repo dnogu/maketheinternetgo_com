@@ -15,7 +15,7 @@ data "aws_acm_certificate" "issued" {
 }
 
 resource "aws_apigatewayv2_api" "mtig" {
-  name          = "mtig-http-api"
+  name          = var.env == "prod" ? "mtig-http-api" : "${var.env}_mtig-http-api"
   protocol_type = "HTTP"
   target = aws_lambda_function.dns_lambda.invoke_arn
 }
