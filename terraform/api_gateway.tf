@@ -20,7 +20,7 @@ resource "aws_apigatewayv2_api" "mtig" {
   target = aws_lambda_function.dns_lambda.invoke_arn
   route_key = "GET /dns"
   cors_configuration {
-    allow_origins = "*"
+    allow_origins = ["*"]
   }
 }
 
