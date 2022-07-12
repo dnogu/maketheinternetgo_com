@@ -1,4 +1,4 @@
-resource "aws_apigatewayv2_domain_name" "api_maketheinternetgo_com" {
+resource "aws_apigatewayv2_domain_name" "mtig" {
   domain_name = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}.api.maketheinternetgo.com"
 
   domain_name_configuration {
@@ -24,7 +24,6 @@ resource "aws_apigatewayv2_api" "mtig" {
 resource "aws_apigatewayv2_api_mapping" "example" {
   api_id      = aws_apigatewayv2_api.mtig.id
   domain_name = aws_apigatewayv2_domain_name.mtig.id
-  stage       = aws_apigatewayv2_stage.mtig.id
 }
 
 output "mtig_url" {
