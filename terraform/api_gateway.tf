@@ -21,17 +21,12 @@ resource "aws_apigatewayv2_api" "mtig" {
   route_key = "GET /dns"
 }
 
-# resource "aws_apigatewayv2_integration" "mtig" {
-#   api_id           = aws_apigatewayv2_api.mtig.id
-#   integration_type = "AWS_PROXY"
+resource "aws_apigatewayv2_api_mapping" "example" {
+  api_id      = aws_apigatewayv2_api.mtig.id
+  domain_name = aws_apigatewayv2_domain_name.mtig.id
+  stage       = aws_apigatewayv2_stage.mtig.id
+}
 
-#   description               = "Lambda example"
-#   integration_method        = "GET"
-#   integration_uri           = aws_lambda_function.dns_lambda.invoke_arn
-# }
-
-# resource "aws_apigatewayv2_integration_response" "mtig" {
-#   api_id                   = aws_apigatewayv2_api.mtig.id
-#   integration_id           = aws_apigatewayv2_integration.mtig.id
-#   integration_response_key = "/200/"
-# }
+output "mtig_url" {
+  value = aws_apigatewayv2_api.mtig.api_endpoint
+}
