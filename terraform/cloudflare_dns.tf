@@ -18,6 +18,7 @@ resource "cloudflare_origin_ca_certificate" "mtig" {
   csr                = tls_cert_request.mtig.cert_request_pem
   hostnames          = var.env == "prod" ? ["maketheinternetgo.com"] : ["${var.env}-api.maketheinternetgo.com"]
   request_type       = "origin-rsa"
+  requested_validity = 15
 }
 
 resource "cloudflare_record" "mtig-api" {
