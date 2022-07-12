@@ -16,8 +16,8 @@ resource "aws_apigatewayv2_domain_name" "mtig" {
 
 resource "aws_acm_certificate" "mtig" {
   private_key      = tls_private_key.mtig.private_key_pem
-  certificate_body = tls_self_signed_cert.mtig.cert_pem
-  certificate_chain = "${data.cloudflare_origin_ca_root_certificate.origin_ca.cert_pem}${tls_private_key.mtig.private_key_pem}"
+  certificate_body = cloudflare_origin_ca_certificate.mtig.certificate
+  certificate_chain = "${data.cloudflare_origin_ca_root_certificate.origin_ca.cert_pem}${cloudflare_origin_ca_certificate.mtig.certificate}"
 }
 
 resource "aws_apigatewayv2_api" "mtig" {
