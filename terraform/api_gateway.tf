@@ -21,7 +21,7 @@ resource "aws_apigatewayv2_api" "mtig" {
 
 resource "aws_apigatewayv2_integration" "mtig" {
   api_id           = aws_apigatewayv2_api.mtig.id
-  integration_type = "HTTP_PROXY"
+  integration_type = "AWS"
 
   description               = "Lambda example"
   integration_method        = "GET"
