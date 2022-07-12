@@ -1,4 +1,4 @@
-resource "aws_apigatewayv2_domain_name" "api.maketheinternetgo.com" {
+resource "aws_apigatewayv2_domain_name" "api_maketheinternetgo_com" {
   domain_name = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}.api.maketheinternetgo.com"
 
   domain_name_configuration {
