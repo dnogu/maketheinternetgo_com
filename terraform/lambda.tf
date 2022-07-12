@@ -2,7 +2,7 @@ resource "aws_lambda_function" "test_lambda" {
   # If the file is not in the current working directory you will need to include a 
   # path.module in the filename.
   filename      = data.archive_file.lambda_zip.output_path
-  function_name = "${var.env}mtig_dns_lambda"
+  function_name = "${var.env}_mtig_dns_lambda"
   role          = aws_iam_role.iam_for_lambda.arn
 
   # The filebase64sha256() function is available in Terraform 0.11.12 and later
