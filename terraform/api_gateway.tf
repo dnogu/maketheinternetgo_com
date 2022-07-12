@@ -1,5 +1,5 @@
 resource "aws_apigatewayv2_domain_name" "mtig" {
-  domain_name = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}.api.maketheinternetgo.com"
+  domain_name = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}-api.maketheinternetgo.com"
 
   domain_name_configuration {
     certificate_arn = data.aws_acm_certificate.issued.arn
@@ -9,7 +9,7 @@ resource "aws_apigatewayv2_domain_name" "mtig" {
 }
 
 data "aws_acm_certificate" "issued" {
-  domain   = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}.api.maketheinternetgo.com"
+  domain   = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}-api.maketheinternetgo.com"
   statuses = ["ISSUED"]
   most_recent = true
 }
