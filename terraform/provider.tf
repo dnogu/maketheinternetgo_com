@@ -12,6 +12,10 @@ terraform {
       source = "cloudflare/cloudflare"
       version = "3.18.0"
     }
+    http = {
+      source = "hashicorp/http"
+      version = "2.2.0"
+    }
   }
 }
 
@@ -28,4 +32,8 @@ provider "archive" {
 provider "cloudflare" {
   email   = var.cloudflare_email
   api_key = var.cloudflare_api_key
+}
+
+provider "http" {
+  # Configuration options
 }

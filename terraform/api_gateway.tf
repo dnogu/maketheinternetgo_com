@@ -30,3 +30,12 @@ resource "aws_apigatewayv2_api_mapping" "example" {
   domain_name = aws_apigatewayv2_domain_name.mtig.id
   stage = "$default"
 }
+
+resource "aws_apigatewayv2_integration" "example" {
+  api_id           = aws_apigatewayv2_api.example.id
+  integration_type = "HTTP_PROXY"
+
+  description               = "Lambda example"
+  integration_method        = "GET"
+  integration_uri           = aws_lambda_function.dns_lambda.invoke_arn
+}
