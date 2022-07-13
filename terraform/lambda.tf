@@ -79,6 +79,6 @@ resource "aws_lambda_permission" "allow_apigateway" {
 
 data "archive_file" "lambda_zip" {
   type        = "zip"
-  source_file = "../aws/dns.js"
+  source_file = "../aws/index.js"
   output_path = "files/dns_js.zip"
 }
