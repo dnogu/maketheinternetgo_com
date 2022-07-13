@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-wrapper">
+          <form id="registration_form" onsubmit="return validation(event)">
+            <h3 class="title">Enter your Detail to Register</h3>
+            <hr>
+            <div id="error-message" class="notification-div">
+            </div>
+            <div class="success-message" class="notification-div"></div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="emailAddress">Email*</label>
+                <input type="email" class="form-control" id="emailAddress" name="email" placeholder="Email">
+                <span id="error-email" class="error-span"></span>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputPassword">Password*</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+                <span id="error-password" class="error-span"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress">Address*</label>
+              <input type="text" class="form-control" id="inputAddress" name="address" placeholder="1234 Main St">
+              <span id="error-address" class="error-span"></span>
+            </div>
+            <div class="form-group">
+              <label for="inputAddress2">Address 2</label>
+              <input type="text" class="form-control" id="inputAddress2" name="address2" placeholder="Apartment, studio, or floor">
+              <span id="error-address" class="error-span"></span>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" name="city">
+                <span id="error-city" class="error-span"></span>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputState">State*</label>
+                <span id="error-state" class="error-span"></span>
+                <select id="inputState" class="form-control" name="state">
+                  <option selected>Province 1</option>
+                  <option>Province 2</option>
+                  <option>Province 3</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-2">
+                <label for="inputZip">Zip*</label>
+                <input type="text" class="form-control" id="inputZip" name="zip">
+                <span id="error-zip" class="error-span"></span>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
