@@ -32,7 +32,7 @@ resource "aws_apigatewayv2_api_mapping" "example" {
 }
 
 resource "aws_apigatewayv2_integration" "example" {
-  api_id           = aws_apigatewayv2_api.example.id
+  api_id           = aws_apigatewayv2_api.mtig.id
   integration_type = "HTTP_PROXY"
 
   description               = "Lambda example"
