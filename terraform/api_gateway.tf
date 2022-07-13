@@ -36,6 +36,6 @@ resource "aws_apigatewayv2_integration" "example" {
   integration_type = "AWS_PROXY"
 
   description               = "Lambda example"
-  integration_method        = "GET"
+  integration_method        = "POST"
   integration_uri           = aws_lambda_function.dns_lambda.invoke_arn
 }
