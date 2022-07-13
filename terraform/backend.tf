@@ -3,7 +3,7 @@ terraform {
     organization = "nogueira_cloud"
 
     workspaces {
-      previxprefix = "maketheinternetgo_com-"
+      prefix = "maketheinternetgo_com-"
     }
   }
 }
