@@ -47,6 +47,6 @@ resource "aws_apigatewayv2_route" "mtig" {
 
 resource "aws_apigatewayv2_stage" "lambda_stage" {
   api_id = aws_apigatewayv2_api.mtig.id
-  name   = "lambda_stage"
+  name   = "${var.env}lambda_stage"
   auto_deploy = true
 }
