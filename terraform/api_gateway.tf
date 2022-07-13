@@ -26,7 +26,7 @@ resource "aws_apigatewayv2_api" "mtig" {
 resource "aws_apigatewayv2_api_mapping" "example" {
   api_id      = aws_apigatewayv2_api.mtig.id
   domain_name = aws_apigatewayv2_domain_name.mtig.id
-  stage = "$default"
+  stage = aws_apigatewayv2_stage.lambda_stage.name
 }
 
 resource "aws_apigatewayv2_integration" "mtig" {
@@ -43,4 +43,9 @@ resource "aws_apigatewayv2_route" "mtig" {
 
   route_key = "GET /dns"
   target    = "integrations/${aws_apigatewayv2_integration.mtig.id}"
+}
+
+resource "aws_apigatewayv2_stage" "lambda_stage" {
+  api_id = aws_apigatewayv2_api.mtig.id
+  name   = "lambda_stage"
 }
