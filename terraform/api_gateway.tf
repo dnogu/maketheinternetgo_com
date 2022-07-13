@@ -17,8 +17,6 @@ resource "aws_acm_certificate" "mtig" {
 resource "aws_apigatewayv2_api" "mtig" {
   name          = var.env == "prod" ? "mtig-http-api" : "${var.env}_mtig-http-api"
   protocol_type = "HTTP"
-  target = aws_lambda_function.dns_lambda.invoke_arn
-  route_key = "GET /dns"
   cors_configuration {
     allow_origins = ["*"]
     allow_methods = [ "GET" ]
@@ -31,11 +29,18 @@ resource "aws_apigatewayv2_api_mapping" "example" {
   stage = "$default"
 }
 
-resource "aws_apigatewayv2_integration" "example" {
+resource "aws_apigatewayv2_integration" "mtig" {
   api_id           = aws_apigatewayv2_api.mtig.id
   integration_type = "AWS_PROXY"
 
   description               = "Lambda example"
   integration_method        = "POST"
   integration_uri           = aws_lambda_function.dns_lambda.invoke_arn
+}
+
+resource "aws_apigatewayv2_route" "mtig" {
+  api_id = aws_apigatewayv2_api.mtig.id
+
+  route_key = "GET /dns"
+  target    = "integrations/${aws_apigatewayv2_integration.mtig.id}"
 }
