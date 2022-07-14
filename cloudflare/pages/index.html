@@ -1,64 +1,68 @@
 <!DOCTYPE html>
 <html>
-<div class="container">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="form-wrapper">
-          <form id="registration_form" onsubmit="return validation(event)">
-            <h3 class="title">Enter your Detail to Register</h3>
-            <hr>
-            <div id="error-message" class="notification-div">
-            </div>
-            <div class="success-message" class="notification-div"></div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="emailAddress">Email*</label>
-                <input type="email" class="form-control" id="emailAddress" name="email" placeholder="Email">
-                <span id="error-email" class="error-span"></span>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <head>
+    <meta charset="utf-8">
+    <title>MTIG</title>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="https://maketheinternetgo.com">MakeTheInternetGo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+    </div>
+  </nav>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-wrapper">
+            <form id="dnsLookupForm" onsubmit="return validation(event)">
+              <h3 class="title">DNS Lookup</h3>
+              <hr>
+              <div id="error-message" class="notification-div">
               </div>
-              <div class="form-group col-md-6">
-                <label for="inputPassword">Password*</label>
-                <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
-                <span id="error-password" class="error-span"></span>
+              <div class="success-message" class="notification-div"></div>
+                <div class="form-row">
+                  <div class="form-group col">
+                  <!-- <div class="form-group col-md-6"> -->
+                    <label for="dnsServer">Server</label>
+                    <input type="text" class="form-control" id="dnsServer" value="default">
+                  </div>
+                  <div class="form-group col">
+                    <label for="fqdn">FQDN</label>
+                    <input type="text" class="form-control" id="inputPassword" name="password" placeholder="maketheinternetgo.com">
+                  </div>
+                  <div class="form-group col">
+                      <label for="queryType">Query Type</label>
+                      <select class="form-control" id="queryType">
+                        <option>A</option>
+                        <option>AAAA</option>
+                        <option>ANY</option>
+                        <option>CAA</option>
+                        <option>CNAME</option>
+                        <option>MX</option>
+                        <option>NAPTR</option>
+                        <option>NS</option>
+                        <option>PTR</option>
+                        <option>SOA</option>
+                        <option>SRV</option>
+                        <option>TXT</option>
+                      </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign in</button>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress">Address*</label>
-              <input type="text" class="form-control" id="inputAddress" name="address" placeholder="1234 Main St">
-              <span id="error-address" class="error-span"></span>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress2">Address 2</label>
-              <input type="text" class="form-control" id="inputAddress2" name="address2" placeholder="Apartment, studio, or floor">
-              <span id="error-address" class="error-span"></span>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity" name="city">
-                <span id="error-city" class="error-span"></span>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputState">State*</label>
-                <span id="error-state" class="error-span"></span>
-                <select id="inputState" class="form-control" name="state">
-                  <option selected>Province 1</option>
-                  <option>Province 2</option>
-                  <option>Province 3</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-md-2">
-                <label for="inputZip">Zip*</label>
-                <input type="text" class="form-control" id="inputZip" name="zip">
-                <span id="error-zip" class="error-span"></span>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </body>
     
 </html>
