@@ -1,9 +1,9 @@
 const dns = require('dns').promises;
 
 function myDnsRequest(server, host, querytype) {
-    // if (server != "default") {
-    //     dns.setServers([server]);
-    // }
+    if (server != "default") {
+        dns.setServers([server]);
+    }
     return dns.resolve(host, querytype).catch((error) => {
         if (error?.code === 'ENODATA') {
             return ["DNS server returned answer with no data."];

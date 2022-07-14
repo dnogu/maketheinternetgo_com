@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <title>MTIG</title>
   </head>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="https://maketheinternetgo.com">MakeTheInternetGo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -30,17 +30,12 @@
               <div class="success-message" class="notification-div"></div>
                 <div class="form-row">
                   <div class="form-group col">
-                  <!-- <div class="form-group col-md-6"> -->
-                    <label for="dnsServer">Server</label>
-                    <input type="text" class="form-control" id="dnsServer" value="default">
-                  </div>
-                  <div class="form-group col">
                     <label for="fqdn">FQDN</label>
                     <input type="text" class="form-control" id="inputPassword" name="password" placeholder="maketheinternetgo.com">
                   </div>
                   <div class="form-group col">
-                      <label for="queryType">Query Type</label>
-                      <select class="form-control" id="queryType">
+                      <label for="recordType">Record Type</label>
+                      <select class="form-control" id="recordType">
                         <option>A</option>
                         <option>AAAA</option>
                         <option>ANY</option>
@@ -55,8 +50,13 @@
                         <option>TXT</option>
                       </select>
                   </div>
+                  <div class="form-group col">
+                  <!-- <div class="form-group col-md-6"> -->
+                    <label for="dnsServer">Server</label>
+                    <input type="text" class="form-control" id="dnsServer" value="default">
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" class="btn btn-dark">Search</button>
               </div>
             </form>
           </div>
