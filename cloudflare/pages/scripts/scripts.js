@@ -63,18 +63,18 @@ function validation(event) {
       "There is error on Form !!! Please Correct it before submitting again";
     return false;
   }
-
+  var map1 = new Map()
   var form = document.getElementById("dnsLookupForm");
-  var formvalue = form;
   var formdata = new FormData(form);
-  // // console.log(document.getElementById("inputFqdn").value);
-  // console.log(formdata.entries());
-  // // for (var [key, value] of formdata.entries()) { 
-  // //   console.log(key, value);
-  // // }
-  fetch("https://dev.maketheinternetgo.com/dns", {
+  for (var [key, value] of formdata.entries()) { 
+    map1.set(key, value)
+  }
+  console.log(map1)
+  console.log(JSON.stringify("JSON STRING: "+map1))
+  fetch(window.location.href+"dns", {
     method: "POST",
-    body: formdata
+    mode: 'cors',
+    body: formdata,
   })
     .then((response) => response.text())
     .then((text) => console.log(text))

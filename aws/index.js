@@ -1,10 +1,10 @@
 const dns = require('dns').promises;
 
-function myDnsRequest(server, host, querytype) {
-    if (server != "default") {
-        dns.setServers([server]);
+function myDnsRequest(inputDnsServer, inputFqdn, inputRecordType) {
+    if (inputDnsServer != "default") {
+        dns.setServers([inputDnsServer]);
     }
-    return dns.resolve(host, querytype).catch((error) => {
+    return dns.resolve(inputFqdn, inputRecordType).catch((error) => {
         if (error?.code === 'ENODATA') {
             return ["DNS server returned answer with no data."];
         } else if (error?.code === 'EFORMERR') {
@@ -59,8 +59,8 @@ function myDnsRequest(server, host, querytype) {
 
 exports.handler = async (event, context) => {
     // TODO implement
-    const x = await myDnsRequest(event.queryStringParameters.server, event.queryStringParameters.host, event.queryStringParameters.querytype);
-    const result = {host: event.queryStringParameters.host, querytype: event.queryStringParameters.querytype, response: x}
+    const x = await myDnsRequest(event.queryStringParameters.inputDnsServer, event.queryStringParameters.inputFqdn, event.queryStringParameters.inputRecordType);
+    const result = {inputFqdn: event.queryStringParameters.inputFqdn, inputRecordType: event.queryStringParameters.inputRecordType, response: x}
     const response = {
         statusCode: 200,
         body: JSON.stringify(result),
