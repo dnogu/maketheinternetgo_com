@@ -64,19 +64,19 @@ function validation(event) {
     return false;
   }
 
-  // var form = document.getElementById("dnsLookupForm");
-  // // var formvalue = form;
-  // var formdata = new FormData(form);
+  var form = document.getElementById("dnsLookupForm");
+  var formvalue = form;
+  var formdata = new FormData(form);
   // // console.log(document.getElementById("inputFqdn").value);
   // console.log(formdata.entries());
   // // for (var [key, value] of formdata.entries()) { 
   // //   console.log(key, value);
   // // }
-  // fetch("/echo", {
-  //   method: "POST",
-  //   body: formdata
-  // })
-  //   .then((response) => response.text())
-  //   .then((text) => console.log(text))
-  //   .catch((error) => console.error(error));
+  fetch("https://dev.maketheinternetgo.com/dns", {
+    method: "POST",
+    body: formdata
+  })
+    .then((response) => response.text())
+    .then((text) => console.log(text))
+    .catch((error) => console.error(error));
 }
