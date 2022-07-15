@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="scripts/scripts.js"></script>
   <head>
     <meta charset="utf-8">
     <title>MTIG</title>
@@ -22,20 +23,22 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="form-wrapper">
-            <form id="dnsLookupForm" onsubmit="return validation(event)">
-              <h3 class="title">DNS Lookup</h3>
+            <!-- <form id="dnsLookupForm" onsubmit="return validation(event)"> -->
+            <form id="dnsLookupForm">
+            <h3 class="title">DNS Lookup</h3>
               <hr>
               <div id="error-message" class="notification-div">
               </div>
               <div class="success-message" class="notification-div"></div>
                 <div class="form-row">
                   <div class="form-group col">
-                    <label for="fqdn">FQDN</label>
-                    <input type="text" class="form-control" id="inputPassword" name="password" placeholder="maketheinternetgo.com">
+                    <label for="inputFqdn">FQDN</label>
+                    <input type="text" class="form-control" id="inputFqdn" name="inputFqdn" placeholder="maketheinternetgo.com">
+                    <span id="error-inputFqdn" class="error-span text-danger"></span>
                   </div>
                   <div class="form-group col">
-                      <label for="recordType">Record Type</label>
-                      <select class="form-control" id="recordType">
+                      <label for="inputRecordType" >Record Type</label>
+                      <select class="form-control" id="inputRecordType" name="inputRecordType">
                         <option>A</option>
                         <option>AAAA</option>
                         <option>ANY</option>
@@ -49,14 +52,15 @@
                         <option>SRV</option>
                         <option>TXT</option>
                       </select>
+                      <span id="error-inputRecordType" class="error-span text-danger"></span>
                   </div>
                   <div class="form-group col">
-                  <!-- <div class="form-group col-md-6"> -->
-                    <label for="dnsServer">Server</label>
-                    <input type="text" class="form-control" id="dnsServer" value="default">
+                    <label for="inputDnsServer">Server</label>
+                    <input type="text" class="form-control" id="inputDnsServer" name="inputDnsServer" value="default">
+                    <span id="error-inputDnsServer" class="error-span text-danger"></span>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-dark">Search</button>
+                <button id="submitButton" type="submit" class="btn btn-dark">Search</button>
               </div>
             </form>
           </div>
