@@ -6,19 +6,6 @@ function load() {
   submitButton.onclick = validation;
 }
 
-// function clicked(a) {
-//   document.body.innerHTML += '<div>welcome</div>';
-//   submitButton = document.getElementById('submitButton');
-//   submitButton.onclick = clicked;
-// }
-
-// function resetErrors() {
-//   document.getElementById("error-inputFqdn").innerHTML = "";
-//   document.getElementById("error-inputDnsServer").innerHTML = "";
-//   document.getElementById("error-inputRecordType").innerHTML = "";
-//   validation
-// }
-
 function validation(event) {
   event.preventDefault();
   document.getElementById("error-message").innerHTML = "";
@@ -77,14 +64,14 @@ function validation(event) {
     return false;
   }
 
-  var form = document.getElementById("dnsLookupForm");
-  // var formvalue = form;
-  var formdata = new FormData(form);
-  // console.log(document.getElementById("inputFqdn").value);
-  console.log(formdata.entries());
-  // for (var [key, value] of formdata.entries()) { 
-  //   console.log(key, value);
-  // }
+  // var form = document.getElementById("dnsLookupForm");
+  // // var formvalue = form;
+  // var formdata = new FormData(form);
+  // // console.log(document.getElementById("inputFqdn").value);
+  // console.log(formdata.entries());
+  // // for (var [key, value] of formdata.entries()) { 
+  // //   console.log(key, value);
+  // // }
   // fetch("/echo", {
   //   method: "POST",
   //   body: formdata
