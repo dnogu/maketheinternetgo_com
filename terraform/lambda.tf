@@ -74,7 +74,7 @@ resource "aws_lambda_permission" "allow_apigateway" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.dns_lambda.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${execution_arn}/*/*/dns"
+  source_arn    = "${aws_apigatewayv2_api.mtig.execution_arn}/*/*/dns"
 }
 
 data "archive_file" "lambda_zip" {
