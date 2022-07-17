@@ -70,4 +70,5 @@ async function validation(event) {
     .catch((error) => console.error(error));
   console.log(resp.inputFqdn);
   document.getElementById('responseHeading').innerHTML ="<h3>" + resp.inputFqdn + "</h3>";
+  document.getElementById('responseHeading').style.display = "block";
 }
