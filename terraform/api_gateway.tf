@@ -1,5 +1,5 @@
 resource "aws_apigatewayv2_domain_name" "mtig" {
-  domain_name = var.env == "prod" ? "maketheinternetgo.com" : "${var.env}-api.maketheinternetgo.com"
+  domain_name = var.env == "prod" ? "api.maketheinternetgo.com" : "${var.env}-api.maketheinternetgo.com"
 
   domain_name_configuration {
     certificate_arn = aws_acm_certificate.mtig.arn
