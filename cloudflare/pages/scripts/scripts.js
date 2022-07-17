@@ -58,6 +58,9 @@ async function validation(event) {
   }
   var form = document.getElementById("dnsLookupForm");
   var formdata = new FormData(form);
+  var env = fetch(window.location.href+"env", {
+    method: "GET"
+  });
   let resp = await fetch(window.location.href+"dns", {
     method: "POST",
     mode: 'cors',
@@ -68,7 +71,8 @@ async function validation(event) {
       return json;
     })
     .catch((error) => console.error(error));
-  console.log(resp.inputFqdn);
+  console.log(resp);
   document.getElementById('responseHeading').innerHTML ="<h3>" + resp.inputFqdn + "</h3>";
   document.getElementById('responseHeading').style.display = "block";
+  console.log(env);
 }
