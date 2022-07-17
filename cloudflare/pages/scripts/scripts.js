@@ -79,7 +79,7 @@ async function validation(event) {
   console.log(resp);
   // document.getElementById('responseHeading').innerHTML ="<h3>" + resp.inputFqdn + "</h3>";
   document.getElementById('recordType').innerHTML ="<h5 class=\"card-title\" style=\"text-align:center\">Results</h5><ul id=\"records\"></ul>";
-  let list = document.getElementById("records");
+  let list = await document.getElementById("records");
   
   await resp.response.forEach((item)=>{
     let li = document.createElement("li");
