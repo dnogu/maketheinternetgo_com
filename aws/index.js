@@ -6,53 +6,53 @@ function myDnsRequest(inputDnsServer, inputFqdn, inputRecordType) {
     }
     return dns.resolve(inputFqdn, inputRecordType).catch((error) => {
         if (error?.code === 'ENODATA') {
-            return ["DNS server returned answer with no data."];
+            return ["Error: DNS server returned answer with no data."];
         } else if (error?.code === 'EFORMERR') {
-            return ["DNS server claims query was misformatted."];
+            return ["Error: DNS server claims query was misformatted."];
         } else if (error?.code === 'ESERVFAIL') {
-            return ["DNS server returned general failure."];
+            return ["Error: DNS server returned general failure."];
         } else if (error?.code === 'ENOTFOUND') {
-            return ["Domain name not found."];
+            return ["Error: Domain name not found."];
         } else if (error?.code === 'ENOTIMP') {
-            return ["DNS server does not implement requested operation."];
+            return ["Error: DNS server does not implement requested operation."];
         } else if (error?.code === 'EREFUSED') {
-            return ["DNS server refused query."];
+            return ["Error: DNS server refused query."];
         } else if (error?.code === 'EBADQUERY') {
-            return ["Misformatted DNS query."];
+            return ["Error: Misformatted DNS query."];
         } else if (error?.code === 'EBADNAME') {
-            return ["Misformatted host name."];
+            return ["Error: Misformatted host name."];
         } else if (error?.code === 'EBADFAMILY') {
-            return ["Unsupported address family."];
+            return ["Error: Unsupported address family."];
         } else if (error?.code === 'EBADRESP') {
-            return ["Misformatted DNS reply."];
+            return ["Error: Misformatted DNS reply."];
         } else if (error?.code === 'ECONNREFUSED') {
-            return ["Could not contact DNS servers."];
+            return ["Error: Could not contact DNS servers."];
         } else if (error?.code === 'ETIMEOUT') {
-            return ["Timeout while contacting DNS servers."];
+            return ["Error: Timeout while contacting DNS servers."];
         } else if (error?.code === 'EEOF') {
-            return ["End of file."];
+            return ["Error: End of file."];
         } else if (error?.code === 'EFILE') {
-            return ["Error reading file."];
+            return ["Error: Error reading file."];
         } else if (error?.code === 'ENOMEM') {
-            return ["Out of memory."];
+            return ["Error: Out of memory."];
         } else if (error?.code === 'EDESTRUCTION') {
-            return ["Channel is being destroyed."];
+            return ["Error: Channel is being destroyed."];
         } else if (error?.code === 'EBADSTR') {
-            return ["Misformatted string."];
+            return ["Error: Misformatted string."];
         } else if (error?.code === 'EBADFLAGS') {
-            return ["Illegal flags specified."];
+            return ["Error: Illegal flags specified."];
         } else if (error?.code === 'ENONAME') {
-            return ["Given host name is not numeric."];
+            return ["Error: Given host name is not numeric."];
         } else if (error?.code === 'EBADHINTS') {
-            return ["Illegal hints flags specified."];
+            return ["Error: Illegal hints flags specified."];
         } else if (error?.code === 'ENOTINITIALIZED') {
-            return ["c-ares library initialization not yet performed."];
+            return ["Error: c-ares library initialization not yet performed."];
         } else if (error?.code === 'ELOADIPHLPAPI') {
-            return ["Error loading iphlpapi.dll."];
+            return ["Error: Error loading iphlpapi.dll."];
         } else if (error?.code === 'EADDRGETNETWORKPARAMS') {
-            return ["Could not find GetNetworkParams function."];
+            return ["Error: Could not find GetNetworkParams function."];
         } else if (error?.code === 'ECANCELLED') {
-            return ["DNS query cancelled."];
+            return ["Error: DNS query cancelled."];
         }
     });
 }

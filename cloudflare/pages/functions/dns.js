@@ -1,4 +1,10 @@
 export async function onRequestPost(context) {
+  var env = context.env.env
+  if (env == "prod") {
+    var apiUrl = "https://api.maketheinternetgo.com/dns?"
+  } else {
+    var apiUrl = "https://" + env + "-api.maketheinternetgo.com/dns?"
+  };
   try {
     let input = await context.request.formData();
     let output = {};
@@ -9,9 +15,9 @@ export async function onRequestPost(context) {
       } else {
         output[key] = [].concat(tmp, value);
       }
-    }
-    let pretty = JSON.stringify(output, null, 2);
-    let resp = await fetch('https://dev-api.maketheinternetgo.com/dns?' + new URLSearchParams(output), {
+    };
+    console.log("preapi");
+    let resp = await fetch(apiUrl + new URLSearchParams(output), {
       method: "GET",
       headers: {
         'Content-Type': 'application/json;charset=utf-8',

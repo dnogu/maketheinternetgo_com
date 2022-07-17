@@ -58,10 +58,15 @@ async function validation(event) {
   }
   var form = document.getElementById("dnsLookupForm");
   var formdata = new FormData(form);
-  var env = fetch(window.location.href+"env", {
-    method: "GET"
-  });
-  let resp = await fetch(window.location.href+"dns", {
+  // var env = await fetch(window.location.href+"env", {
+  //   method: "GET"
+  // })
+  // .then((response) => response.text())
+  // .then((text) => {
+  //   return text;
+  // })
+  // .catch((error) => console.error(error));
+  var resp = await fetch(window.location.href+"dns", {
     method: "POST",
     mode: 'cors',
     body: formdata,
@@ -72,7 +77,14 @@ async function validation(event) {
     })
     .catch((error) => console.error(error));
   console.log(resp);
-  document.getElementById('responseHeading').innerHTML ="<h3>" + resp.inputFqdn + "</h3>";
-  document.getElementById('responseHeading').style.display = "block";
-  console.log(env);
+  // document.getElementById('responseHeading').innerHTML ="<h3>" + resp.inputFqdn + "</h3>";
+  document.getElementById('recordType').innerHTML ="<h5 class=\"card-title\" style=\"text-align:center\">Results</h5><ul id=\"records\"></ul>";
+  let list = document.getElementById("records");
+  
+  resp.response.forEach((item)=>{
+    let li = document.createElement("li");
+    li.innerText = item;
+    list.appendChild(li);
+  })
+  document.getElementById('responseBox').style.display = "block";
 }
