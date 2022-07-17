@@ -29,3 +29,11 @@ resource "cloudflare_record" "mtig-api" {
   proxied = true
 }
 
+
+resource "cloudflare_record" "mtig" {
+  zone_id = data.cloudflare_zone.mtig.id
+  name    = var.env == "prod" ? "@" : "${var.env}"
+  value   = "maketheinternetgo-com.pages.dev"
+  type    = "CNAME"
+  proxied = true
+}
