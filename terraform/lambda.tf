@@ -16,7 +16,7 @@ resource "aws_lambda_function" "dns_lambda" {
 }
 
 resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam_for_lambda"
+  name = "${var.env}-iam_for_lambda"
 
   assume_role_policy = <<EOF
 {
