@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles/styles.css">
+  <script src="scripts/scripts.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MTIG</title>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="https://maketheinternetgo.com">MakeTheInternetGo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+    </div>
+  </nav>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-wrapper">
+            <!-- <form id="dnsLookupForm" onsubmit="return validation(event)"> -->
+            <form id="dnsLookupForm">
+            <h3 class="title">DNS Lookup</h3>
+              <hr>
+              <div id="error-message" class="notification-div">
+              </div>
+              <div class="success-message" class="notification-div"></div>
+                <div class="form-row">
+                  <div class="form-group col-sm">
+                    <label class="d-flex" for="inputFqdn">FQDN</label>
+                    <input type="text" class="form-control" id="inputFqdn" name="inputFqdn" placeholder="maketheinternetgo.com">
+                    <span id="error-inputFqdn" class="error-span text-danger"></span>
+                  </div>
+                  <div class="form-group col-sm">
+                      <label for="inputRecordType" >Record Type</label>
+                      <select class="form-control" id="inputRecordType" name="inputRecordType">
+                        <option>A</option>
+                        <option>AAAA</option>
+                        <option>ANY</option>
+                        <option>CAA</option>
+                        <option>CNAME</option>
+                        <option>MX</option>
+                        <option>NAPTR</option>
+                        <option>NS</option>
+                        <option>PTR</option>
+                        <option>SOA</option>
+                        <option>SRV</option>
+                        <option>TXT</option>
+                      </select>
+                      <span id="error-inputRecordType" class="error-span text-danger"></span>
+                  </div>
+                  <div class="form-group col-sm">
+                    <label for="inputDnsServer">Server</label>
+                    <input type="text" class="form-control" id="inputDnsServer" name="inputDnsServer" value="default">
+                    <span id="error-inputDnsServer" class="error-span text-danger"></span>
+                  </div>
+                </div>
+                <button id="submitButton" type="submit" class="btn btn-dark">Search</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" id="responseBox" style="display:block">
+    <hr>
+    <!-- <div class="row">
+      <div style="padding-top: 10pt; position: relative; width: 100%;" class="col">
+        <div id="responseHeading" style="text-align: center; align-items: center; border-color: crimson; border-width: 1em; height: 100%;">
+        </div>
+      </div>
+    </div> -->
+    <div class="row" style="position: relative;">
+        <div class="card-body" id="recordType">
+          <h5 class="card-title" ></h5>
+          <ul id="records"></ul>
+        </div>
+      </div>
+    </div>
+    
+  </body>
+    
+</html>
