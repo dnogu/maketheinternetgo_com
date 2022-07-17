@@ -6,7 +6,7 @@ function load() {
   submitButton.onclick = validation;
 }
 
-function validation(event) {
+async function validation(event) {
   event.preventDefault();
   document.getElementById("error-message").innerHTML = "";
   document.getElementById("error-message").style.display = "none";
@@ -17,7 +17,6 @@ function validation(event) {
   const regex = {
     fqdn: /(?=^.{1,254}$)(^(?:(?!\d+\.)[a-zA-Z0-9_\-]{1,63}\.?)+(?:[a-zA-Z]{2,})$)/,
     dnsServer: /^\b(?:(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(?:25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\b$/
-    // password: /^\w+$/
   };
   var fqdn = document.getElementById("inputFqdn").value;
   var dnsServer = document.getElementById("inputDnsServer").value;
@@ -29,18 +28,13 @@ function validation(event) {
     document.getElementById("inputFqdn").focus();
     formerror = true;
   }
-  // console.log(formerror)
 
   if (recordType == "") {
     document.getElementById("error-inputRecordType").innerHTML = "How did you make this blank?\n\tIt's a dropdown!!!!!!";
     document.getElementById("inputRecordType").focus();
     formerror = true;
   }
-  // console.log(formerror)
 
-//   if (recordType) {
-//     recordType = recordType.trim();
-//   }
 
   if (dnsServer == "") {
     document.getElementById("error-inputDnsServer").innerHTML =
@@ -48,7 +42,6 @@ function validation(event) {
     document.getElementById("inputDnsServer").focus();
     formerror = true;
   }
-  // console.log(formerror)
 
   if (((!regex.dnsServer.test(dnsServer)) && (dnsServer != "default") && (dnsServer != ""))) {
     document.getElementById("error-inputDnsServer").innerHTML =
@@ -63,20 +56,18 @@ function validation(event) {
       "There is error on Form !!! Please Correct it before submitting again";
     return false;
   }
-  var map1 = new Map()
   var form = document.getElementById("dnsLookupForm");
   var formdata = new FormData(form);
-  for (var [key, value] of formdata.entries()) { 
-    map1.set(key, value)
-  }
-  console.log(map1)
-  console.log(JSON.stringify("JSON STRING: "+map1))
-  fetch(window.location.href+"dns", {
+  let resp = await fetch(window.location.href+"dns", {
     method: "POST",
     mode: 'cors',
     body: formdata,
-  })
-    .then((response) => response.text())
-    .then((text) => console.log(text))
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      return json;
+    })
     .catch((error) => console.error(error));
+  console.log(resp.inputFqdn);
+  document.getElementById('responseHeading').innerHTML ="<h3>" + resp.inputFqdn + "</h3>";
 }
