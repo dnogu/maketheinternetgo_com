@@ -82,6 +82,9 @@ async function validation(event) {
 }
 
 function onload() {
-  document.getElementById("navbarLink").href = "https://" + window.location.hostname;
+  console.log(window.location.hostname)
+  let navLinkButton = document.getElementById("navbarLink");
+  console.log(navLinkButton);
+  navLinkButton.setAttribute("href", window.location.hostname);
   // document.getElementById('navbarLink').innerHTML ="<a class=\"navbar-brand\" href=\"" + window.location.hostname + "\">MakeTheInternetGo</a>";
 }
