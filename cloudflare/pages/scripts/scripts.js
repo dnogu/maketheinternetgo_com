@@ -66,7 +66,7 @@ async function validation(event) {
   //   return text;
   // })
   // .catch((error) => console.error(error));
-  var resp = await fetch(window.location.href+"dns", {
+  var resp = await fetch(window.location.href+"api/dns", {
     method: "POST",
     mode: 'cors',
     body: formdata,
