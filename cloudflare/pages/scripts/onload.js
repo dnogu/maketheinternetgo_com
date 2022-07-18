@@ -1,0 +1,1 @@
+document.getElementById('navbarLink').innerHTML ="<a class=\"navbar-brand\" href=\"" + window.location.hostname + "\">MakeTheInternetGo</a>";

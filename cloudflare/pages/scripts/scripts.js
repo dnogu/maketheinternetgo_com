@@ -58,14 +58,6 @@ async function validation(event) {
   }
   var form = document.getElementById("dnsLookupForm");
   var formdata = new FormData(form);
-  // var env = await fetch(window.location.href+"env", {
-  //   method: "GET"
-  // })
-  // .then((response) => response.text())
-  // .then((text) => {
-  //   return text;
-  // })
-  // .catch((error) => console.error(error));
   var resp = await fetch(window.location.href+"api/dns", {
     method: "POST",
     mode: 'cors',
@@ -87,4 +79,9 @@ async function validation(event) {
     list.appendChild(li);
   })
   document.getElementById('responseBox').style.display = "block";
+}
+
+function onload() {
+  document.getElementById("navbarLink").href = "https://" + window.location.hostname;
+  // document.getElementById('navbarLink').innerHTML ="<a class=\"navbar-brand\" href=\"" + window.location.hostname + "\">MakeTheInternetGo</a>";
 }
