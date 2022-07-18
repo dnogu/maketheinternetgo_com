@@ -81,10 +81,26 @@ async function validation(event) {
   document.getElementById('responseBox').style.display = "block";
 }
 
-function onload() {
-  console.log(window.location.hostname)
-  let navLinkButton = document.getElementById("navbarLink");
+function load() {
+  if ((window.location.port == 80) || (window.location.port == 443)) {
+      document.getElementById("navbarLink").setAttribute("href", window.location.protocol + "//" + window.location.hostname);
+  } else {
+    document.getElementById("navbarLink").setAttribute("href", window.location.protocol + "//" + window.location.hostname + ":" + window.location.port);
+  };
+  var navLinkButton = document.getElementById("navbarLink");
   console.log(navLinkButton);
-  navLinkButton.setAttribute("href", window.location.hostname);
-  // document.getElementById('navbarLink').innerHTML ="<a class=\"navbar-brand\" href=\"" + window.location.hostname + "\">MakeTheInternetGo</a>";
 }
+
+function getIP(json) {
+  console.log("My public IP address is: ", json);
+  console.log(document.getElementById("myIpAddress"));
+  document.getElementById("myIpAddress").innerHTML = json.ip;
+  // document.write("My public IP address is: ", json.ip);
+}
+
+function onLoadGetIP() {
+  var el = document.createElement('script');
+  el.src = "https://api.ipify.org?format=jsonp&callback=getIP"
+  document.body.append(el)
+}
+
