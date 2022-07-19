@@ -81,7 +81,7 @@ async function validation(event) {
   document.getElementById('responseBox').style.display = "block";
 }
 
-function load() {
+function windowload() {
   if ((window.location.port == 80) || (window.location.port == 443)) {
       document.getElementById("navbarLink").setAttribute("href", window.location.protocol + "//" + window.location.hostname);
   } else {
