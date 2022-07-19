@@ -95,6 +95,7 @@ function getIP(json) {
   console.log("My public IP address is: ", json);
   console.log(document.getElementById("myIpAddress"));
   document.getElementById("myIpAddress").innerHTML = json.ip;
+  document.getElementById('myIpAddressBlock').style.display = "block"
   // document.write("My public IP address is: ", json.ip);
 }
 
