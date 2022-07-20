@@ -30,9 +30,10 @@ resource "cloudflare_record" "mtig-api" {
 }
 
 resource "cloudflare_page_rule" "cache_level" {
+    count = var.env == "prod" ? 1 : 0
     zone_id = data.cloudflare_zone.mtig.id
     target = "*maketheinternetgo.com/*"
-    priority = 10
+    priority = 1
 
     actions {
         cache_level = "bypass"
@@ -40,9 +41,10 @@ resource "cloudflare_page_rule" "cache_level" {
 }
 
 resource "cloudflare_page_rule" "forward" {
+    count = var.env == "prod" ? 1 : 0
     zone_id = data.cloudflare_zone.mtig.id
     target = "www.maketheinternetgo.com/*"
-    priority = 100
+    priority = 2
 
     actions {
         forwarding_url {
