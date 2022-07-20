@@ -29,11 +29,25 @@ resource "cloudflare_record" "mtig-api" {
   proxied = true
 }
 
+resource "cloudflare_page_rule" "test" {
+    zone_id = data.cloudflare_zone.mtig.id
+    target = "*maketheinternetgo.com/*"
+    priority = 2
 
-# resource "cloudflare_record" "mtig" {
-#   zone_id = data.cloudflare_zone.mtig.id
-#   name    = var.env == "prod" ? "@" : "${var.env}"
-#   value   = var.env == "prod" ? "maketheinternetgo-com.pages.dev" : "${var.env}.maketheinternetgo-com.pages.dev"
-#   type    = "CNAME"
-#   proxied = true
-# }
+    actions {
+        cache_level = "bypass"
+    }
+}
+
+resource "cloudflare_page_rule" "forward" {
+    zone_id = data.cloudflare_zone.mtig.id
+    target = "www.maketheinternetgo.com/*"
+    priority = 1
+
+    actions {
+        forwarding_url {
+        url = "https://maketheinternetgo.com/$1"
+        status_code = "301"
+        }
+    }
+}
