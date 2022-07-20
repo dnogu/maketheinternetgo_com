@@ -29,10 +29,10 @@ resource "cloudflare_record" "mtig-api" {
   proxied = true
 }
 
-resource "cloudflare_page_rule" "test" {
+resource "cloudflare_page_rule" "cache_level" {
     zone_id = data.cloudflare_zone.mtig.id
     target = "*maketheinternetgo.com/*"
-    priority = 2
+    priority = 10
 
     actions {
         cache_level = "bypass"
@@ -42,7 +42,7 @@ resource "cloudflare_page_rule" "test" {
 resource "cloudflare_page_rule" "forward" {
     zone_id = data.cloudflare_zone.mtig.id
     target = "www.maketheinternetgo.com/*"
-    priority = 1
+    priority = 100
 
     actions {
         forwarding_url {
