@@ -58,15 +58,7 @@ async function validation(event) {
   }
   var form = document.getElementById("dnsLookupForm");
   var formdata = new FormData(form);
-  // var env = await fetch(window.location.href+"env", {
-  //   method: "GET"
-  // })
-  // .then((response) => response.text())
-  // .then((text) => {
-  //   return text;
-  // })
-  // .catch((error) => console.error(error));
-  var resp = await fetch(window.location.href+"dns", {
+  var resp = await fetch(window.location.href+"api/dns", {
     method: "POST",
     mode: 'cors',
     body: formdata,
@@ -88,3 +80,28 @@ async function validation(event) {
   })
   document.getElementById('responseBox').style.display = "block";
 }
+
+function windowload() {
+  if ((window.location.port == 80) || (window.location.port == 443)) {
+      document.getElementById("navbarLink").setAttribute("href", window.location.protocol + "//" + window.location.hostname);
+  } else {
+    document.getElementById("navbarLink").setAttribute("href", window.location.protocol + "//" + window.location.hostname + ":" + window.location.port);
+  };
+  var navLinkButton = document.getElementById("navbarLink");
+  console.log(navLinkButton);
+}
+
+function getIP(json) {
+  console.log("My public IP address is: ", json);
+  console.log(document.getElementById("myIpAddress"));
+  document.getElementById("myIpAddress").innerHTML = json.ip;
+  document.getElementById('myIpAddressBlock').style.display = "block"
+  // document.write("My public IP address is: ", json.ip);
+}
+
+function onLoadGetIP() {
+  var el = document.createElement('script');
+  el.src = "https://api.ipify.org?format=jsonp&callback=getIP"
+  document.body.append(el)
+}
+

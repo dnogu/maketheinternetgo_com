@@ -7,15 +7,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MTIG</title>
-  </head>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script>window.onload = windowLoad</script>
+    </head>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="https://maketheinternetgo.com">MakeTheInternetGo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a id="navbarLink" class="navbar-brand" href="https://maketheinternetgo.com">MakeTheInternetGo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">DNS Lookup <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="myip">MY IP</a>
+        </li>
       </ul>
     </div>
   </nav>
@@ -42,7 +51,7 @@
                       <select class="form-control" id="inputRecordType" name="inputRecordType">
                         <option>A</option>
                         <option>AAAA</option>
-                        <option>ANY</option>
+                        <!-- <option>ANY</option> -->
                         <option>CAA</option>
                         <option>CNAME</option>
                         <option>MX</option>
@@ -68,24 +77,15 @@
         </div>
       </div>
     </div>
-
     <div class="container" id="responseBox" style="display:block">
-    <hr>
-    <!-- <div class="row">
-      <div style="padding-top: 10pt; position: relative; width: 100%;" class="col">
-        <div id="responseHeading" style="text-align: center; align-items: center; border-color: crimson; border-width: 1em; height: 100%;">
-        </div>
-      </div>
-    </div> -->
-    <p>dev</p>
-    <div class="row" style="position: relative;">
-        <div class="card-body" id="recordType">
-          <h5 class="card-title" ></h5>
-          <ul id="records"></ul>
+      <hr>
+      <div class="row" style="position: relative;">
+          <div class="card-body" id="recordType">
+            <h5 class="card-title" ></h5>
+            <ul id="records"></ul>
+          </div>
         </div>
       </div>
     </div>
-    
   </body>
-    
 </html>
