@@ -35,7 +35,7 @@ resource "cloudflare_record" "site_verification" {
   name    = "@"
   value   = "google-site-verification=-bRuU9UjBtUfoCdPVqTjM15flBgu2hiJbjpi7EjQBo0"
   type    = "TXT"
-  proxied = true
+  proxied = false
 }
 
 resource "cloudflare_page_rule" "cache_level" {
