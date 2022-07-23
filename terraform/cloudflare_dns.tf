@@ -29,7 +29,7 @@ resource "cloudflare_record" "mtig-api" {
   proxied = true
 }
 
-resource "cloudflare_record" "" {
+resource "cloudflare_record" "site_verification" {
   count = var.env == "prod" ? 1 : 0
   zone_id = data.cloudflare_zone.mtig.id
   name    = "@"
