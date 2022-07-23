@@ -29,6 +29,15 @@ resource "cloudflare_record" "mtig-api" {
   proxied = true
 }
 
+resource "cloudflare_record" "site_verification" {
+  count = var.env == "prod" ? 1 : 0
+  zone_id = data.cloudflare_zone.mtig.id
+  name    = "@"
+  value   = "google-site-verification=-bRuU9UjBtUfoCdPVqTjM15flBgu2hiJbjpi7EjQBo0"
+  type    = "TXT"
+  proxied = true
+}
+
 resource "cloudflare_page_rule" "cache_level" {
     count = var.env == "prod" ? 1 : 0
     zone_id = data.cloudflare_zone.mtig.id
